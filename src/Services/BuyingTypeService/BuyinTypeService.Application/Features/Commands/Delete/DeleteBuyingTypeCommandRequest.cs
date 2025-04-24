@@ -1,6 +1,7 @@
 ﻿using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
+using BuyingTypeService.Application.InformationMessages;
 using BuyingTypeService.Application.Wrappers;
 using MediatR;
 
@@ -14,7 +15,7 @@ public class DeleteBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingType
     {
         public async Task<ResponseResult<BuyingTypeModel>> Handle(DeleteBuyingTypeCommandRequest request, CancellationToken cancellationToken)
         {
-            var model = await buyingTypeRepository.GetAsync(predicate: i => i.Id == request.Id);
+            var model = await buyingTypeRepository.GetAsync(predicate: i => i.Id == request.Id, cancellationToken: cancellationToken);
             if (model == null) {
                 return ResponseResult<BuyingTypeModel>.Fail(BusinessMessages.BuyingTypeNotFound);
             }
@@ -26,7 +27,7 @@ public class DeleteBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingType
             var entity = await buyingTypeRepository.UpdateAsync(model);
 
             return ResponseResult<BuyingTypeModel>.Success(new BuyingTypeModel 
-            { Id = model.Id, BuyingTypeName = model.BuyingTypeName, TenantId = model.TenantId }, "Buying type deleted successfully.");
+            { Id = model.Id, BuyingTypeName = model.BuyingTypeName, TenantId = model.TenantId },InfoMessages.BuyingTypeDeletedSuccessfully);
         }
     }
 }

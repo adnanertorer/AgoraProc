@@ -7,6 +7,6 @@ public class DeleteBuyingTypeCommandRequestValidator : AbstractValidator<DeleteB
 {
     public DeleteBuyingTypeCommandRequestValidator()
     {
-        RuleFor(x => x.Id).GreaterThan(0).WithMessage(ValidationMessages.IdMusBeGreatherThenZero);
+        RuleFor(x => x.Id).GreaterThan(0).WithMessage(ValidationMessages.IdMusBeGreaterThenZero);
     }
 }

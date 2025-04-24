@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\Update\" />
     <Folder Include="Features\Queries\GetById\" />
     <Folder Include="Features\Queries\GetList\" />
   </ItemGroup>
