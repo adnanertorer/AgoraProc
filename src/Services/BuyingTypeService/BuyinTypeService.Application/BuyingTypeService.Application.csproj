@@ -8,15 +8,18 @@
 
   <ItemGroup>
     <PackageReference Include="Adoroid.Core.Application" Version="1.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="MinimalMediatR" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\Delete\" />
     <Folder Include="Features\Commands\Update\" />
-    <Folder Include="ExceptionMessages\" />
     <Folder Include="Features\Queries\GetById\" />
     <Folder Include="Features\Queries\GetList\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BuyingTypeService.Domain\BuyingTypeService.Domain.csproj" />
   </ItemGroup>
 
 </Project>

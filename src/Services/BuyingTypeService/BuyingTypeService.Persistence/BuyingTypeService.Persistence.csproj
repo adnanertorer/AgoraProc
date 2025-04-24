@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuyingTypeService.Domain\BuyingTypeService.Domain.csproj" />
+    <ProjectReference Include="..\BuyinTypeService.Application\BuyingTypeService.Application.csproj" />
   </ItemGroup>
 
 </Project>
