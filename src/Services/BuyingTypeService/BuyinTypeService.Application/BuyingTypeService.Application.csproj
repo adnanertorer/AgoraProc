@@ -13,11 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Queries\GetById\" />
-    <Folder Include="Features\Queries\GetList\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BuyingTypeService.Domain\BuyingTypeService.Domain.csproj" />
   </ItemGroup>
 
