@@ -1,6 +1,7 @@
 ﻿using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
+using BuyingTypeService.Application.InformationMessages;
 using BuyingTypeService.Application.Wrappers;
 using BuyingTypeService.Domain.Entities;
 using MediatR;
@@ -40,7 +41,7 @@ public class CreateBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingType
                 Id = resultEntity.Id
             };
 
-            return ResponseResult<BuyingTypeModel>.Success(model, "Buying type created successfully.");
+            return ResponseResult<BuyingTypeModel>.Success(model, InfoMessages.BuyingTypeCreatedSuccessfully);
         }
     }
 }
