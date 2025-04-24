@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Adoroid.Core.Application" Version="1.0.0" />
+    <PackageReference Include="MinimalMediatR" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Commands\Delete\" />
+    <Folder Include="Features\Commands\Update\" />
+    <Folder Include="ExceptionMessages\" />
+    <Folder Include="Features\Queries\GetById\" />
+    <Folder Include="Features\Queries\GetList\" />
+  </ItemGroup>
+
+</Project>
