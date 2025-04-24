@@ -7,6 +7,6 @@ public class GetBuyingTypeByIdRequestValidator : AbstractValidator<GetBuyingType
 {
     public GetBuyingTypeByIdRequestValidator()
     {
-        RuleFor(x => x.Id).GreaterThan(0).WithMessage(ValidationMessages.IdMusBeGreatherThenZero);
+        RuleFor(x => x.Id).GreaterThan(0).WithMessage(ValidationMessages.IdMusBeGreaterThenZero);
     }
 }
