@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
 using Adoroid.Core.Application.Rules;
-using BuyingTypeService.Application.Features.Commands.Create;
-using BuyingTypeService.Application.Features.Commands.Create.Validators;
-using BuyingTypeService.Application.Features.Commands.Update;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MinimalMediatR.Extensions;
 using FluentValidation;
+using MinimalMediatR.Behaviors;
+using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application;
 
@@ -15,7 +14,8 @@ public static class BuyingTypeServiceCollection
     public static IServiceCollection AddBuyingTypeServiceCollection(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), type: typeof(BaseBusinessRule));
-        services.AddMinimalMediatR(typeof(CreateBuyingTypeCommandRequest).Assembly, typeof(UpdateBuyingTypeCommandRequest).Assembly, typeof(CreateBuyingTypeCommandRequestValidator).Assembly);
+        services.AddMinimalMediatR(Assembly.GetExecutingAssembly());
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         return services;
     }

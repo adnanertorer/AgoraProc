@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyingTypeService.Persisten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyingTypeService.Application", "src\Services\BuyingTypeService\BuyinTypeService.Application\BuyingTypeService.Application.csproj", "{FFD662AD-042F-45E8-AAF8-46012FF2DDDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuyingTypeService.API", "src\Services\BuyingTypeService\BuyingTypeService.API\BuyingTypeService.API.csproj", "{E6DF1FC9-F103-4D13-8743-A2A1ECC980EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{FFD662AD-042F-45E8-AAF8-46012FF2DDDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD662AD-042F-45E8-AAF8-46012FF2DDDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD662AD-042F-45E8-AAF8-46012FF2DDDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6DF1FC9-F103-4D13-8743-A2A1ECC980EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6DF1FC9-F103-4D13-8743-A2A1ECC980EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6DF1FC9-F103-4D13-8743-A2A1ECC980EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6DF1FC9-F103-4D13-8743-A2A1ECC980EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{0009E03F-E953-45F7-9F82-6E1D2FF1DE0E} = {902073A1-4B8E-46B3-97DC-DB8FE2B71478}
 		{7EDF0E66-C741-41A7-9E86-BCF2C4FEB154} = {902073A1-4B8E-46B3-97DC-DB8FE2B71478}
 		{FFD662AD-042F-45E8-AAF8-46012FF2DDDF} = {902073A1-4B8E-46B3-97DC-DB8FE2B71478}
+		{E6DF1FC9-F103-4D13-8743-A2A1ECC980EE} = {902073A1-4B8E-46B3-97DC-DB8FE2B71478}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8BCD710-2625-47F4-BC11-103FDE7B7BA7}

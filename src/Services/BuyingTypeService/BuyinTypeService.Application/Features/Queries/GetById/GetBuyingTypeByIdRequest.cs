@@ -2,7 +2,7 @@
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
 using BuyingTypeService.Application.Wrappers;
-using MediatR;
+using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application.Features.Queries.GetById;
 

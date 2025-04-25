@@ -3,8 +3,8 @@ using Adoroid.Core.Repository.Paging;
 using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.Wrappers;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
+using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application.Features.Queries.GetList;
 
