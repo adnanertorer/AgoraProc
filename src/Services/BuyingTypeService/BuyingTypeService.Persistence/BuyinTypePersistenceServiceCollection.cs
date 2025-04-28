@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using BuyingTypeService.Application.Abstracts;
-using BuyingTypeService.Persistence.Options;
 using BuyingTypeService.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,8 +13,8 @@ public static class BuyinTypePersistenceServiceCollection
     {
         services.AddDbContext<BuyingTypeDbContext>(options =>
         {
-            var connectionStrings = configuration.GetSection(ConnectionStringOption.Key).Get<ConnectionStringOption>();
-            options.UseNpgsql(connectionStrings!.DefaultConnection, m => m.MigrationsAssembly(Assembly.GetExecutingAssembly()));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnectionString"), m => m.MigrationsAssembly("BuyingTypeService.API"));
+            
         });
         services.AddScoped<IBuyingTypeRepository, BuyingTypeRepository>();
         return services;
