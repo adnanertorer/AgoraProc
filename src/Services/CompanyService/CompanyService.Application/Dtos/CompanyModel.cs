@@ -2,6 +2,7 @@ namespace CompanyService.Application.Dtos;
 
 public class CompanyModel
 {
+    public long Id { get; set; }
     public long TenantId { get; set; }
     public string CompanyName { get; set; } = null!;
     public string CompanyDescription { get; set; } = null!;
