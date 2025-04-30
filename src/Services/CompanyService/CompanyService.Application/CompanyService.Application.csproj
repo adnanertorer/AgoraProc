@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Adoroid.Core.Application" Version="1.0.0" />
+      <PackageReference Include="FluentValidation" Version="11.11.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+      <PackageReference Include="MinimalMediatR" Version="1.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Adoroid.Core.Repository">
+        <HintPath>..\..\..\..\..\..\..\.nuget\packages\adoroid.core.repository\1.0.0\lib\net9.0\Adoroid.Core.Repository.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CompanyService.Domain\CompanyService.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
