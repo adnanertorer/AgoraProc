@@ -33,13 +33,19 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
             .HasMaxLength(20);
         builder.Property(i => i.IsActive)
             .IsRequired();
-        builder.Property(i => i.OTPCode)
+        builder.Property(i => i.OtpCode)
             .HasMaxLength(6);
         builder.Property(i => i.Password)
             .IsRequired()
             .HasMaxLength(64);
         builder.Property(i => i.RefreshToken)
             .HasMaxLength(50);
+        builder.Property(i => i.VatNumber)
+            .IsRequired()
+            .HasMaxLength(16);
+        builder.Property(i => i.VatOffice)
+            .IsRequired()
+            .HasMaxLength(150);
         
         builder.Property(c => c.UpdatedBy).HasMaxLength(64);
         builder.Property(c => c.DeletedBy).HasMaxLength(64);

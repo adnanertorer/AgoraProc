@@ -10,21 +10,23 @@ public class Company : Entity<long>
         CompanyServices = new HashSet<CompanyService>();
     }
 
-    public long TenantId { get; set; }
-    public string CompanyName { get; set; } = default!;
-    public string CompanyDescription { get; set; } = default!;
-    public string CompanyPhone { get; set; } = default!;
-    public string Gsm { get; set; } = default!;
-    public string AuthorizedPerson { get; set; } = default!;
-    public string Email { get; set; } = default!;
-    public string Password { get; set; } = default!;
-    public bool IsActive { get; set; }
-    public string? RefreshToken { get; set; }
-    public DateTime? RefreshTokenEndDate { get; set; }
-    public string? OTPCode { get; set; }
-    public string? CompanyFile { get; set; }
-    public bool? IsInBlackList { get; set; }
-    public bool? Canceled { get; set; }
+    public long TenantId { get; init; }
+    public string CompanyName { get; init; } = null!;
+    public string CompanyDescription { get; init; } = null!;
+    public string CompanyPhone { get; init; } = null!;
+    public string Gsm { get; init; } = null!;
+    public string AuthorizedPerson { get; init; } = null!;
+    public string Email { get; init; } = null!;
+    public string Password { get; init; } = null!;
+    public bool IsActive { get; init; }
+    public string? RefreshToken { get; init; }
+    public DateTime? RefreshTokenEndDate { get; init; }
+    public string? OtpCode { get; init; }
+    public string? CompanyFile { get; init; }
+    public bool? IsInBlackList { get; init; }
+    public bool? Canceled { get; init; }
+    public string VatNumber { get; init; } = null!;
+    public string VatOffice { get; init; } = null!;
 
-    public virtual ICollection<CompanyService> CompanyServices { get; set; }
+    public virtual ICollection<CompanyService> CompanyServices { get; init; }
 }
