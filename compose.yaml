@@ -1,0 +1,7 @@
+﻿services:
+  identitymanagementapi:
+    image: identitymanagementapi
+    build:
+      context: .
+      dockerfile: src/Shared/IdentityManagementAPI/Dockerfile
+
