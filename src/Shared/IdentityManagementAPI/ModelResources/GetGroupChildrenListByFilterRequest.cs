@@ -1,9 +1,13 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace IdentityManagementAPI.ModelResources;
 
 public class GetGroupChildrenListByFilterRequest
 {
+    [JsonIgnore]
+    public string? GroupId { get; set; }
+    
     [JsonPropertyName("briefRepresentation")]
     public bool? BriefRepresentation { get; set; }
     [JsonPropertyName("exact")]

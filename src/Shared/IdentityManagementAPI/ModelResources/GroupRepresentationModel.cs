@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace IdentityManagementAPI.ModelResources;
 
 public class GroupRepresentationModel
 {
+    [JsonIgnore]
+    public string? GroupId { get; set; }
     [JsonPropertyName("id")]
     public string? Id { get; set; }
     [JsonPropertyName("name")]

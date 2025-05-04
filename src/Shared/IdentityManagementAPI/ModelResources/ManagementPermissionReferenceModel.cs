@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace IdentityManagementAPI.ModelResources;
 
 public class ManagementPermissionReferenceModel
 {
+    [NotMapped]
+    public string GroupId { get; set; } = null!;
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
     [JsonPropertyName("resource")]

@@ -20,6 +20,8 @@ builder.Services.AddCors(options =>
                           .AllowAnyHeader());
 });
 
+builder.Services.AddAuthorization();
+
 builder.Services.AddSwaggerGen(setup =>
 {
     var jwtSecuritySheme = new OpenApiSecurityScheme
@@ -61,6 +63,7 @@ builder.Services.AddKeycloakWebApiAuthentication(builder.Configuration);
 var app = builder.Build();
 
 app.AuthEndpoints();
+app.GroupEndpoints();
 
 // Configure the HTTP request pipeline.
 /*if (app.Environment.IsDevelopment())

@@ -4,6 +4,8 @@ namespace IdentityManagementAPI.ModelResources;
 
 public class GetGroupMembersByFilter
 {
+    [JsonIgnore]
+    public string? GroupId { get; set; }
     [JsonPropertyName("briefRepresentation")]
     public bool? BriefRepresentation { get; set; }
     [JsonPropertyName("first")]
