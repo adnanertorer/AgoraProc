@@ -1,4 +1,4 @@
-namespace IdentityManagementAPI.Services;
+namespace IdentityManagementAPI.Services.Abstracts;
 
 public interface ICurrentUserService
 {

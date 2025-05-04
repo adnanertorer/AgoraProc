@@ -1,3 +1,7 @@
+using System.Net;
+using System.Text.Json;
+using IdentityManagementAPI.ModelResources;
+
 namespace IdentityManagementAPI.Wrappers;
 
 public class Response<T>
@@ -6,10 +10,12 @@ public class Response<T>
     public string? Message { get; set; }
     public T? Data { get; set; }
     public List<string>? Errors { get; set; }
+    public int? StatusCode { get; set; }
 
-    public static Response<T> Success(T data, string? message = null)
-        => new() { Succeeded = true, Data = data, Message = message };
+    public static Response<T> Success(T data, string? message = null, int? statusCode = 200)
+        => new() { Succeeded = true, Data = data, Message = message, StatusCode = statusCode };
 
-    public static Response<T> Fail(string message, List<string>? errors = null)
-        => new() { Succeeded = false, Message = message, Errors = errors };
+    public static Response<T> Fail(string message, List<string>? errors = null, int? statusCode = 400)
+        => new() { Succeeded = false, Message = message, Errors = errors, StatusCode = statusCode };
 }
+

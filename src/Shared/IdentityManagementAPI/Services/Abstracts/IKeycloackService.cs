@@ -1,7 +1,7 @@
 using IdentityManagementAPI.ModelResources;
 using IdentityManagementAPI.Wrappers;
 
-namespace IdentityManagementAPI.Services;
+namespace IdentityManagementAPI.Services.Abstracts;
 
 public interface IKeycloackService
 {
