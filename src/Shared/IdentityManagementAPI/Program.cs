@@ -64,6 +64,7 @@ var app = builder.Build();
 
 app.AuthEndpoints();
 app.GroupEndpoints();
+app.RoleEndpointBuilders();
 
 // Configure the HTTP request pipeline.
 /*if (app.Environment.IsDevelopment())
