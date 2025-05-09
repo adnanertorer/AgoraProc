@@ -4,6 +4,8 @@ namespace IdentityManagementAPI.ModelResources;
 
 public class RoleRepresentationModel
 {
+    [JsonIgnore]
+    public string? GroupId { get; set; }
     [JsonPropertyName("id")]
     public string? Id { get; set; }
     [JsonPropertyName("name")]
