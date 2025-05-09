@@ -14,21 +14,21 @@ public static class GroupEnpointMaps
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapPost("/api/group/getgroups", async (IKeycloackService service,
+        builder.MapPost("/api/group/get-groups", async (IKeycloackService service,
          GetGroupListByFilterRequest request, CancellationToken cancellationToken) =>
         {
             var result = await service.GetGroups(request, cancellationToken);
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapPost("/api/group/getgroupchildren", async (IKeycloackService service, 
+        builder.MapPost("/api/group/get-group-children", async (IKeycloackService service, 
         GetGroupChildrenListByFilterRequest request, CancellationToken cancellationToken) =>
         {
             var result = await service.GetGroupChildren(request.GroupId!, request, cancellationToken);
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapPost("/api/group/addgroupchildren", async (IKeycloackService service, 
+        builder.MapPost("/api/group/add-group-children", async (IKeycloackService service, 
         GroupRepresentationModel request, CancellationToken cancellationToken) =>
         {
             var result = await service.AddGroupChildren(request.GroupId!, request, cancellationToken);
@@ -42,7 +42,7 @@ public static class GroupEnpointMaps
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapGet("/api/group/groupmanagementpermission/{groupId}", async (IKeycloackService service, 
+        builder.MapGet("/api/group/group-management-permission/{groupId}", async (IKeycloackService service, 
         string groupId, CancellationToken cancellationToken) =>
         {
             var result = await service.GetGroupManagementPermission(groupId, cancellationToken);
@@ -50,28 +50,28 @@ public static class GroupEnpointMaps
         }).RequireAuthorization();
 
 
-        builder.MapPut("/api/group/updategroupmanagementpermission", async (IKeycloackService service,
+        builder.MapPut("/api/group/update-group-management-permission", async (IKeycloackService service,
          ManagementPermissionReferenceModel request, CancellationToken cancellationToken) =>
         {
             var result = await service.UpdateGroupManagementPermission(request.GroupId, request, cancellationToken);
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapPost("/api/group/getgroupmembers", async (IKeycloackService service,
+        builder.MapPost("/api/group/get-group-members", async (IKeycloackService service,
         GetGroupMembersByFilter request, CancellationToken cancellationToken) =>
         {
             var result = await service.GetGroupUsers(request.GroupId!, request, cancellationToken);
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapPut("/api/group/updategroup", async (IKeycloackService service,
+        builder.MapPut("/api/group/update-group", async (IKeycloackService service,
         GroupRepresentationModel request, CancellationToken cancellationToken) =>
        {
            var result = await service.UpdateGroup(request.GroupId!, request, cancellationToken);
            return result.ToIResult();
        }).RequireAuthorization();
 
-        builder.MapPost("/api/group/addusertogroup", async (IKeycloackService service,
+        builder.MapPost("/api/group/add-user-to-group", async (IKeycloackService service,
         AddUserToGroupRequestModel request, CancellationToken cancellationToken) =>
        {
            var result = await service.AddUserToGroup(request.UserId, request.GroupId, cancellationToken);

@@ -23,12 +23,12 @@ public static class AuthEnpointMaps
             return result.ToIResult();
         }).RequireAuthorization();
 
-        builder.MapPost("/api/auth/sendresetpasswordemail", async(IKeycloackService service, CancellationToken cancellationToken)=>{
+        builder.MapPost("/api/auth/send-reset-password-email", async(IKeycloackService service, CancellationToken cancellationToken)=>{
             var result = await service.SendResetPasswordEmail(cancellationToken);
             return result.ToIResult();
         }).RequireAuthorization();
 
-         builder.MapPost("/api/auth/resetpasword", async(IKeycloackService service, ResetPasswordModel request, CancellationToken cancellationToken) => {
+         builder.MapPost("/api/auth/reset-password", async(IKeycloackService service, ResetPasswordModel request, CancellationToken cancellationToken) => {
             var result = await service.ResetPassword(request, cancellationToken);
             return result.ToIResult();
         }).RequireAuthorization();
