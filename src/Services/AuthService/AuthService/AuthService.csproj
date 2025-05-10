@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\IdentityManagementAPI\IdentityManagementAPI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Adoroid.Core.Application">
+        <HintPath>..\..\..\..\..\..\..\.nuget\packages\adoroid.core.application\1.0.0\lib\net9.0\Adoroid.Core.Application.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
