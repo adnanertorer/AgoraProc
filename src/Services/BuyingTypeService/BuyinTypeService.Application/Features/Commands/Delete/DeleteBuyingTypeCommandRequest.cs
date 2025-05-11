@@ -1,4 +1,5 @@
-﻿using BuyingTypeService.Application.Abstracts;
+﻿using AuthService.Services.Abstracts;
+using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
 using BuyingTypeService.Application.InformationMessages;
@@ -12,7 +13,7 @@ public class DeleteBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingType
     public long Id { get; set; }
 }
 
-public class DeleteBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository) : IRequestHandler<DeleteBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
+public class DeleteBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository, ICurrentUserService currentUserService) : IRequestHandler<DeleteBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
 {
     public async Task<ResponseResult<BuyingTypeModel>> Handle(DeleteBuyingTypeCommandRequest request, CancellationToken cancellationToken)
     {
@@ -23,7 +24,7 @@ public class DeleteBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingT
         }
 
         model.DeletedDate = DateTime.UtcNow;
-        model.DeletedBy = "system";
+        model.DeletedBy = currentUserService.Id;
         model.IsDeleted = true;
 
         var entity = await buyingTypeRepository.UpdateAsync(model);

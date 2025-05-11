@@ -1,4 +1,5 @@
-﻿using BuyingTypeService.Application.Abstracts;
+﻿using AuthService.Services.Abstracts;
+using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
 using BuyingTypeService.Application.InformationMessages;
@@ -8,7 +9,7 @@ using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application.Features.Commands.Create;
 
-public class CreateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository) : IRequestHandler<CreateBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
+public class CreateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository, ICurrentUserService currentUserService) : IRequestHandler<CreateBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
 {
     public async Task<ResponseResult<BuyingTypeModel>> Handle(CreateBuyingTypeCommandRequest request, CancellationToken cancellationToken)
     {
@@ -19,12 +20,12 @@ public class CreateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingT
         {
             return ResponseResult<BuyingTypeModel>.Fail(BusinessMessages.BuyinTypeIsAlreadyExists);
         }
-
+        
         var entity = new BuyingType
         {
             BuyingTypeName = request.BuyingType.BuyingTypeName,
             TenantId = request.BuyingType.TenantId,
-            CreatedBy = "system",
+            CreatedBy = currentUserService.Id,
             CreatedDate = DateTime.UtcNow,
             IsDeleted = false
         };

@@ -1,4 +1,5 @@
-﻿using BuyingTypeService.Application.Abstracts;
+﻿using AuthService.Services.Abstracts;
+using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
 using BuyingTypeService.Application.InformationMessages;
@@ -12,7 +13,7 @@ public class UpdateBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingType
     public required BuyingTypeModel BuyingType {  get; set; }
 }
 
-public class UpdateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository) : IRequestHandler<UpdateBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
+public class UpdateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository, ICurrentUserService currentUserService) : IRequestHandler<UpdateBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
 {
     public async Task<ResponseResult<BuyingTypeModel>> Handle(UpdateBuyingTypeCommandRequest request, CancellationToken cancellationToken)
     {
@@ -23,7 +24,7 @@ public class UpdateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingT
         }
 
         model.UpdatedDate = DateTime.UtcNow;
-        model.UpdatedBy = "system";
+        model.UpdatedBy = currentUserService.Id;
         model.BuyingTypeName = request.BuyingType.BuyingTypeName;
 
         await buyingTypeRepository.UpdateAsync(model);
