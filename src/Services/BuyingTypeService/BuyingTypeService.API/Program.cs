@@ -1,8 +1,13 @@
 using Adoroid.Core.Application.Exceptions.Middlewares;
+using AuthService.Abstracts;
+using AuthService.Configs;
+using AuthService.Services.Abstracts;
+using AuthService.Services.Concrete;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using BuyingTypeService.Application;
 using BuyingTypeService.Persistence;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +15,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddBuyinTypePersistenceServiceCollection(builder.Configuration);
 builder.Services.AddBuyingTypeServiceCollection(builder.Configuration);
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+builder.Services.Configure<AuthServerInfo>(builder.Configuration.GetSection("AuthServerInfo"));
+builder.Services.AddHttpClient<IAuthService, AuthService.Concrete.AuthService>((serviceProvider, client) =>
+{
+    var options = serviceProvider.GetRequiredService<IOptions<AuthServerInfo>>().Value;
+    client.BaseAddress = new Uri(options.AuthServerUrl);
+});
 
 builder.Services.AddCors(options =>
 {
@@ -45,8 +60,26 @@ builder.Services.AddSwaggerGen(setup =>
                 });
 });
 
+builder.Services.AddAuthorization();
 
-builder.Services.AddControllers();
+var authSection = builder.Configuration.GetSection("AuthenticationInfo");
+builder.Services.Configure<AuthenticationInfo>(authSection);
+
+var authenticationInfo = authSection.Get<AuthenticationInfo>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = authenticationInfo!.Authority;
+        options.Audience = authenticationInfo!.Audience;
+        options.RequireHttpsMetadata = authenticationInfo!.RequireHttpsMetadata;
+    });
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

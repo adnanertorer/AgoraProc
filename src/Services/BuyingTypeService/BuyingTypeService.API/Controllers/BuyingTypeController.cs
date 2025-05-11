@@ -3,6 +3,7 @@ using BuyingTypeService.Application.Features.Commands.Delete;
 using BuyingTypeService.Application.Features.Commands.Update;
 using BuyingTypeService.Application.Features.Queries.GetById;
 using BuyingTypeService.Application.Features.Queries.GetList;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MinimalMediatR.Core;
 using MinimalMediatR.Extensions;
@@ -11,6 +12,7 @@ namespace BuyingTypeService.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class BuyingTypeController : BaseController
 {
     public BuyingTypeController(IMediator mediator) : base(mediator) { }
