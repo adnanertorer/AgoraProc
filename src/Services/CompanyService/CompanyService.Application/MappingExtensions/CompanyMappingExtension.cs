@@ -10,12 +10,12 @@ public static class CompanyMappingExtension
     {
         return new CompanyModel
         {
-            AuthorizedPerson = company.AuthorizedPerson,
+            AuthorizedPersonFirstName = company.AuthorizedPersonFirstName,
+            AuthorizedPersonLastName = company.AuthorizedPersonLastName,
             CompanyDescription = company.CompanyDescription,
             CompanyName = company.CompanyName,
             CompanyFile = company.CompanyFile,
             CompanyPhone = company.CompanyPhone,
-            Email = company.Email,
             Gsm = company.Gsm,
             TenantId = company.TenantId,
             Id = company.Id
@@ -26,12 +26,12 @@ public static class CompanyMappingExtension
     {
         return new Company
         {
-            AuthorizedPerson = model.AuthorizedPerson,
+            AuthorizedPersonFirstName = model.FirstName,
+            AuthorizedPersonLastName = model.LastName,
             CompanyDescription = model.CompanyDescription,
             CompanyName = model.CompanyName,
             CompanyFile = model.CompanyFile,
             CompanyPhone = model.CompanyPhone,
-            Email = model.Email,
             Gsm = model.Gsm,
             TenantId = model.TenantId
         };
@@ -41,12 +41,12 @@ public static class CompanyMappingExtension
     {
         return new Company
         {
-            AuthorizedPerson = model.AuthorizedPerson,
+            AuthorizedPersonFirstName = model.AuthorizedPersonFirstName,
+            AuthorizedPersonLastName = model.AuthorizedPersonLastName,
             CompanyDescription = model.CompanyDescription,
             CompanyName = model.CompanyName,
             CompanyFile = model.CompanyFile,
             CompanyPhone = model.CompanyPhone,
-            Email = model.Email,
             Gsm = model.Gsm,
             TenantId = model.TenantId,
             Id = model.Id

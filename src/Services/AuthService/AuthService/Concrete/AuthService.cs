@@ -5,11 +5,17 @@ using System.Text.Json;
 using Adoroid.Core.Application.Exceptions.Types;
 using AuthService.Abstracts;
 using AuthService.Configs;
-using AuthService.Models;
 using AuthService.Requests;
 using AuthService.Responses;
 using IdentityManagementAPI.Services.Abstracts;
-using Microsoft.AspNetCore.Identity.Data;
+using AddUserToGroupRequestModel = AuthService.Requests.AddUserToGroupRequestModel;
+using GetAccessTokenResponseModel = AuthService.Responses.GetAccessTokenResponseModel;
+using GetGroupListByFilterRequest = AuthService.Requests.GetGroupListByFilterRequest;
+using GroupRepresentationModel = AuthService.Models.GroupRepresentationModel;
+using ResetPasswordModel = AuthService.Models.ResetPasswordModel;
+using StatusModel = AuthService.Models.StatusModel;
+using UpdateUserModel = AuthService.Models.UpdateUserModel;
+using UserModel = AuthService.Models.UserModel;
 
 namespace AuthService.Concrete;
 

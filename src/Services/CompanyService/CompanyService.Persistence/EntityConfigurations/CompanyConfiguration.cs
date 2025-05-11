@@ -11,9 +11,12 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
         builder.HasKey(i => i.Id);
         builder.Property(i => i.TenantId)
             .IsRequired();
-        builder.Property(i => i.AuthorizedPerson)
+        builder.Property(i => i.AuthorizedPersonFirstName)
             .IsRequired()
-            .HasMaxLength(150);
+            .HasMaxLength(50);
+        builder.Property(i => i.AuthorizedPersonLastName)
+            .IsRequired()
+            .HasMaxLength(50);
         builder.Property(i => i.CompanyDescription)
             .HasMaxLength(250);
         builder.Property(i => i.CompanyFile)
@@ -22,9 +25,6 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
         builder.Property(i => i.CompanyName)
             .IsRequired()
             .HasMaxLength(150);
-        builder.Property(i => i.Email)
-            .IsRequired()
-            .HasMaxLength(50);
         builder.Property(i => i.CompanyPhone)
             .IsRequired()
             .HasMaxLength(20);
@@ -33,13 +33,6 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
             .HasMaxLength(20);
         builder.Property(i => i.IsActive)
             .IsRequired();
-        builder.Property(i => i.OtpCode)
-            .HasMaxLength(6);
-        builder.Property(i => i.Password)
-            .IsRequired()
-            .HasMaxLength(64);
-        builder.Property(i => i.RefreshToken)
-            .HasMaxLength(50);
         builder.Property(i => i.VatNumber)
             .IsRequired()
             .HasMaxLength(16);

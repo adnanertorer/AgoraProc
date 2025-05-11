@@ -9,8 +9,10 @@ public static class ValidationMessages
         return $"{name} must be grater than {lenght}";
     }
     public static readonly string TenantIdMustBeGreaterThanZero = MustBeGreaterThan("Tenant id", 0);
-    public const string AuthorizedPersonCannotBeEmpty = "Authorized person cannot be empty";
-    public static readonly string AuthorizedPersonMaxCharacter = MaximumCharacterWarning("authorized person", 150);
+    public const string AuthorizedPersonFirstNameCannotBeEmpty = "Authorized person first name cannot be empty";
+    public static readonly string AuthorizedPersonFirstNameMaxCharacter = MaximumCharacterWarning("authorized person first name", 50);
+    public const string AuthorizedPersonLastNameCannotBeEmpty = "Authorized person last name cannot be empty";
+    public static readonly string AuthorizedPersonLastNameMaxCharacter = MaximumCharacterWarning("authorized person last name", 50);
     public const string CompanyDescriptionCannotBeEmpty = "Company description cannot be empty";
     public static readonly string CompanyDescriptionMaxCharacter = MaximumCharacterWarning("company description", 250);
     public const string CompanyNameCannotBeEmpty = "Company name cannot be empty";

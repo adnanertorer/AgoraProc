@@ -1,7 +1,6 @@
 using AuthService.Models;
 using AuthService.Requests;
 using AuthService.Responses;
-using Microsoft.AspNetCore.Identity.Data;
 
 namespace AuthService.Abstracts;
 

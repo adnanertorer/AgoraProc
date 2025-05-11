@@ -8,7 +8,8 @@ public class CompanyModel
     public string CompanyDescription { get; set; } = null!;
     public string CompanyPhone { get; set; } = null!;
     public string Gsm { get; set; } = null!;
-    public string AuthorizedPerson { get; set; } = null!;
+    public string AuthorizedPersonFirstName { get; set; } = null!;
+    public string AuthorizedPersonLastName { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string Password { get; set; } = null!;
     public string? CompanyFile { get; set; }

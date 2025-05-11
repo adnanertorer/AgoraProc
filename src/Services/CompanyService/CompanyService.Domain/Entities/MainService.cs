@@ -10,8 +10,8 @@ public class MainService : Entity<long>
         CustomerServices = new HashSet<CustomerService>();
     }
     public long TenantId { get; set; }
-    public string MainServiceName { get; set; } = default!;
-    public string MainServiceCode { get; set; } = default!;
+    public string MainServiceName { get; set; }
+    public string MainServiceCode { get; set; }
 
     public virtual ICollection<CompanyService> CompanyServices { get; set; }
     public virtual ICollection<CustomerService> CustomerServices { get; set; }

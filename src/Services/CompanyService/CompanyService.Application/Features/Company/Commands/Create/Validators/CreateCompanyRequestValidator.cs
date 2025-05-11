@@ -43,13 +43,21 @@ public class CreateCompanyRequestValidator : AbstractValidator<CreateCompanyRequ
             .MaximumLength(20)
             .WithMessage(ValidationMessages.GsmMaximumCharacter);
         
-        RuleFor(i => i.AuthorizedPerson)
+        RuleFor(i => i.FirstName)
             .NotEmpty()
-            .WithMessage(ValidationMessages.AuthorizedPersonCannotBeEmpty)
+            .WithMessage(ValidationMessages.AuthorizedPersonFirstNameCannotBeEmpty)
             .NotNull()
-            .WithMessage(ValidationMessages.AuthorizedPersonCannotBeEmpty)
-            .MaximumLength(150)
-            .WithMessage(ValidationMessages.AuthorizedPersonMaxCharacter);
+            .WithMessage(ValidationMessages.AuthorizedPersonFirstNameCannotBeEmpty)
+            .MaximumLength(50)
+            .WithMessage(ValidationMessages.AuthorizedPersonFirstNameMaxCharacter);
+        
+        RuleFor(i => i.LastName)
+            .NotEmpty()
+            .WithMessage(ValidationMessages.AuthorizedPersonLastNameCannotBeEmpty)
+            .NotNull()
+            .WithMessage(ValidationMessages.AuthorizedPersonLastNameCannotBeEmpty)
+            .MaximumLength(50)
+            .WithMessage(ValidationMessages.AuthorizedPersonLastNameMaxCharacter);
         
         RuleFor(i => i.Email)
             .NotEmpty()

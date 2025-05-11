@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using IdentityManagementAPI.ModelResources;
 using IdentityManagementAPI.Services.Abstracts;
 using IdentityManagementAPI.Wrappers;
