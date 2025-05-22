@@ -10,4 +10,5 @@ public class BusinessMessages
     public const string CustomerServiceNotFound = "Customer service not found";
     public const string MainServiceIsAlreadyExists = "Main service is already exists";
     public const string MainServiceNotFound = "Main service not found";
+    public const string UnExceptedError = "UnExceptedError";
 }

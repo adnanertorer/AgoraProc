@@ -29,8 +29,7 @@ public class CreateCompanyRequestHandler(ICompanyRepository  repository,
         var resultEntity = await repository.AddAsync(entity);
         var registerRequest = new RegisterRequest(request.Email, request.FirstName, request.LastName, request.Email,
             request.Password, true, true, false, request.Gsm, resultEntity.Id);
-        await authService.Register(registerRequest, cancellationToken);
-        
-        return Response<CompanyModel>.Success(resultEntity.ToModel());
+        var result = await authService.Register(registerRequest, cancellationToken);
+        return result is { Success: false } ? Response<CompanyModel>.Fail(BusinessMessages.UnExceptedError) : Response<CompanyModel>.Success(resultEntity.ToModel());
     }
 }

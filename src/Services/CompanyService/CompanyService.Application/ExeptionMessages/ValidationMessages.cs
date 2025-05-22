@@ -36,4 +36,5 @@ public static class ValidationMessages
     public static readonly string VatNumberMaximumCharacter = MaximumCharacterWarning("vat number", 20);
     public const string VatOfficeCannotBeEmpty = "VAT office cannot be empty";
     public static readonly string VatOfficeMaximumCharacter = MaximumCharacterWarning("vat office", 150);
+    public const string IdMusBeGreaterThenZero = "Id must be greater than zero";
 }
