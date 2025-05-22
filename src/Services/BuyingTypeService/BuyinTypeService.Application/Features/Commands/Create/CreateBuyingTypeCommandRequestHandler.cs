@@ -1,24 +1,25 @@
-﻿using AuthService.Services.Abstracts;
+﻿using Adoroid.Core.Application.Wrappers;
+using AuthService.Services.Abstracts;
 using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
 using BuyingTypeService.Application.InformationMessages;
-using BuyingTypeService.Application.Wrappers;
 using BuyingTypeService.Domain.Entities;
 using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application.Features.Commands.Create;
 
-public class CreateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository, ICurrentUserService currentUserService) : IRequestHandler<CreateBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
+public class CreateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository, 
+    ICurrentUserService currentUserService) : IRequestHandler<CreateBuyingTypeCommandRequest, Response<BuyingTypeModel>>
 {
-    public async Task<ResponseResult<BuyingTypeModel>> Handle(CreateBuyingTypeCommandRequest request, CancellationToken cancellationToken)
+    public async Task<Response<BuyingTypeModel>> Handle(CreateBuyingTypeCommandRequest request, CancellationToken cancellationToken)
     {
         var isExist = await buyingTypeRepository.AnyAsync(predicate: i => i.TenantId == request.BuyingType.TenantId
         && i.BuyingTypeName == request.BuyingType.BuyingTypeName, cancellationToken: cancellationToken);
 
         if (isExist)
         {
-            return ResponseResult<BuyingTypeModel>.Fail(BusinessMessages.BuyinTypeIsAlreadyExists);
+            return Response<BuyingTypeModel>.Fail(BusinessMessages.BuyinTypeIsAlreadyExists);
         }
         
         var entity = new BuyingType
@@ -39,6 +40,6 @@ public class CreateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingT
             Id = resultEntity.Id
         };
 
-        return ResponseResult<BuyingTypeModel>.Success(model, InfoMessages.BuyingTypeCreatedSuccessfully);
+        return Response<BuyingTypeModel>.Success(model, InfoMessages.BuyingTypeCreatedSuccessfully);
     }
 }

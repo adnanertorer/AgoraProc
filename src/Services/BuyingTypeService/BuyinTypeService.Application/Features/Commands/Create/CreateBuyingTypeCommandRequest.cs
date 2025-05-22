@@ -1,10 +1,10 @@
-﻿using BuyingTypeService.Application.Dtos;
-using BuyingTypeService.Application.Wrappers;
+﻿using Adoroid.Core.Application.Wrappers;
+using BuyingTypeService.Application.Dtos;
 using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application.Features.Commands.Create;
 
-public class CreateBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingTypeModel>>
+public class CreateBuyingTypeCommandRequest : IRequest<Response<BuyingTypeModel>>
 {
     public required BuyingTypeModel BuyingType { get; set; }
 

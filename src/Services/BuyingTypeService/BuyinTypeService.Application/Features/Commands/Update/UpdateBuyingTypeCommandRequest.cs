@@ -1,26 +1,27 @@
-﻿using AuthService.Services.Abstracts;
+﻿using Adoroid.Core.Application.Wrappers;
+using AuthService.Services.Abstracts;
 using BuyingTypeService.Application.Abstracts;
 using BuyingTypeService.Application.Dtos;
 using BuyingTypeService.Application.ExceptionMessages;
 using BuyingTypeService.Application.InformationMessages;
-using BuyingTypeService.Application.Wrappers;
 using MinimalMediatR.Core;
 
 namespace BuyingTypeService.Application.Features.Commands.Update;
 
-public class UpdateBuyingTypeCommandRequest : IRequest<ResponseResult<BuyingTypeModel>>
+public class UpdateBuyingTypeCommandRequest : IRequest<Response<BuyingTypeModel>>
 {
     public required BuyingTypeModel BuyingType {  get; set; }
 }
 
-public class UpdateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository, ICurrentUserService currentUserService) : IRequestHandler<UpdateBuyingTypeCommandRequest, ResponseResult<BuyingTypeModel>>
+public class UpdateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingTypeRepository,
+    ICurrentUserService currentUserService) : IRequestHandler<UpdateBuyingTypeCommandRequest, Response<BuyingTypeModel>>
 {
-    public async Task<ResponseResult<BuyingTypeModel>> Handle(UpdateBuyingTypeCommandRequest request, CancellationToken cancellationToken)
+    public async Task<Response<BuyingTypeModel>> Handle(UpdateBuyingTypeCommandRequest request, CancellationToken cancellationToken)
     {
         var model = await buyingTypeRepository.GetAsync(predicate: i => i.Id == request.BuyingType.Id, cancellationToken: cancellationToken);
         if (model == null)
         {
-            return ResponseResult<BuyingTypeModel>.Fail(BusinessMessages.BuyingTypeNotFound);
+            return Response<BuyingTypeModel>.Fail(BusinessMessages.BuyingTypeNotFound);
         }
 
         model.UpdatedDate = DateTime.UtcNow;
@@ -30,7 +31,7 @@ public class UpdateBuyingTypeCommandRequestHandler(IBuyingTypeRepository buyingT
         await buyingTypeRepository.UpdateAsync(model);
 
 
-        return ResponseResult<BuyingTypeModel>.Success(new BuyingTypeModel
+        return Response<BuyingTypeModel>.Success(new BuyingTypeModel
         { Id = model.Id, BuyingTypeName = model.BuyingTypeName, TenantId = model.TenantId }, InfoMessages.BuyingTypeUpdatedSuccessfully);
     }
 }

@@ -1,3 +1,4 @@
+using Adoroid.Core.Application.Wrappers;
 using AuthService.Abstracts;
 using AuthService.Requests;
 using AuthService.Services.Abstracts;
@@ -5,22 +6,21 @@ using CompanyService.Application.Abstracts;
 using CompanyService.Application.Dtos;
 using CompanyService.Application.ExeptionMessages;
 using CompanyService.Application.MappingExtensions;
-using CompanyService.Application.Wrappers;
 using MinimalMediatR.Core;
 
 namespace CompanyService.Application.Features.Company.Commands.Create;
 
 public class CreateCompanyRequestHandler(ICompanyRepository  repository, 
-    ICurrentUserService currentUserService, IAuthService authService) : IRequestHandler<CreateCompanyRequest, ResponseResult<CompanyModel>>
+    ICurrentUserService currentUserService, IAuthService authService) : IRequestHandler<CreateCompanyRequest, Response<CompanyModel>>
 {
-    public async Task<ResponseResult<CompanyModel>> Handle(CreateCompanyRequest request, CancellationToken cancellationToken)
+    public async Task<Response<CompanyModel>> Handle(CreateCompanyRequest request, CancellationToken cancellationToken)
     {
         var isExist = await repository.AnyAsync(
             i => i.VatNumber == request.VatNumber && i.VatOffice == request.VatOffice,
             cancellationToken: cancellationToken);
 
         if (isExist)
-            return ResponseResult<CompanyModel>.Fail(BusinessMessages.CompanyIsAlreadyExists);
+            return Response<CompanyModel>.Fail(BusinessMessages.CompanyIsAlreadyExists);
 
         var entity = request.ToEntityRequest();
         entity.CreatedBy = currentUserService.Id;
@@ -31,6 +31,6 @@ public class CreateCompanyRequestHandler(ICompanyRepository  repository,
             request.Password, true, true, false, request.Gsm, resultEntity.Id);
         await authService.Register(registerRequest, cancellationToken);
         
-        return ResponseResult<CompanyModel>.Success(resultEntity.ToModel());
+        return Response<CompanyModel>.Success(resultEntity.ToModel());
     }
 }

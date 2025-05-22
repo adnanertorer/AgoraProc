@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Adoroid.Core.Application" Version="1.0.0" />
+    <PackageReference Include="Adoroid.Core.Application" Version="1.0.3" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="MinimalMediatR" Version="1.0.3" />
